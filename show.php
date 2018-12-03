@@ -2,10 +2,7 @@
 
 
 <?php
-// 1. Подключиться к БД
 $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-// CRUD
-//2. Подготовить запрос
 $sql = "SELECT * FROM messages";
 $statement = $pdo->prepare($sql);
 $result = $statement->execute();
@@ -33,6 +30,8 @@ $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
             <a href="/">Go Back</a>
             </tr>
 
+
+            
         </div>
     </div>
 </div>
