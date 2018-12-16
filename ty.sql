@@ -1,0 +1,9 @@
+CREATE TABLE users (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR (20) NOT NULL);
+
+CREATE TABLE messages (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    message_id INT NOT NULL,
+    message VARCHAR(45) NOT NULL,
+    FOREIGN KEY (message_id) REFERENCES users (id));

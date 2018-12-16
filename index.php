@@ -10,11 +10,11 @@
             <h1>Name</h1>
             <form action="store.php" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="userName">
+                    <input type="text" class="form-control" name="user_name">
                 </div>
                 <h1>Message</h1>
                 <div class="form-group">
-                    <textarea name="content" class="form-control"></textarea>
+                    <textarea name="message" class="form-control"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -25,4 +25,3 @@
     </div>
 </div>
 </body>
-</html>

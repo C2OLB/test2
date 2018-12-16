@@ -2,8 +2,9 @@
 
 
 <?php
+
 $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-$sql = "SELECT * FROM messages";
+$sql = "SELECT * FROM users JOIN messages ON users.id = messages.message_id";
 $statement = $pdo->prepare($sql);
 $result = $statement->execute();
 $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -20,18 +21,27 @@ $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <tr>
-            <?php foreach($messages as $message):?>
-            <h1><?= $message['userName'];?></h1> <i>says:</i>
-            <h2>
-                <?= $message['content'];?>
-            </h2>
-            <?php endforeach;?>
-            <a href="/">Go Back</a>
-            </tr>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">message</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($messages as $message):?>
+                <tr>
+                    <th scope="row"><?=$message['id'];?></th>
+                    <td scope="row"><?=$message['user_name'];?></td>
+                    <td scope="row"><?=$message['message'];?></td>
+                </tr>
+
+                <?php endforeach;?>
+                </tbody>
+            </table>
 
 
-            
         </div>
     </div>
 </div>
