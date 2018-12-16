@@ -11,12 +11,7 @@
 $pdo = new PDO("mysql:host=test2; dbname=test", "root", "");
      // добавленик  пользователя и сообщение в бд
 
-       $pdo->beginTransaction();
 
-       $sql = "INSERT INTO users (user_name) VALUES (:user_name)";
-       $stmt = $pdo->prepare($sql);
-       $stmt->bindParam(':user_name',$user_name);
-       $stmt->execute();
 
 // хочу сравнить уже существует такой пользователь или нет
 
@@ -24,24 +19,35 @@ $sql = "SELECT user_name FROM users WHERE user_name =:user_name";
 $statement = $pdo->prepare($sql);
 $statement->bindParam(':user_name',$user_name);
 $statement->execute();
-
 $result = $statement->fetch();
 //print_r ($result);
 echo $result[0];
+         if ($result[0] === $user_name){
+             echo "exist";
+         }
+         else{
+              $pdo->beginTransaction();
 
+             $sql = "INSERT INTO users (user_name) VALUES (:user_name)";
+             $stmt = $pdo->prepare($sql);
+             $stmt->bindParam(':user_name',$user_name);
+             $stmt->execute();
+
+             //по последнему инсерту достаем ИД для месседжа
+             $message_id = $pdo->lastInsertId();
+
+
+             $sql = "INSERT INTO messages (message,message_id) VALUES (:message,$message_id)";
+             $stmt = $pdo->prepare($sql);
+             $stmt->bindParam(':message',$message);
+             $stmt->execute();
+
+             $pdo->commit();
+         }
    die;
 
 
- //по последнему инсерту достаем ИД для месседжа
-       $message_id = $pdo->lastInsertId();
 
-
-       $sql = "INSERT INTO messages (message,message_id) VALUES (:message,$message_id)";
-       $stmt = $pdo->prepare($sql);
-       $stmt->bindParam(':message',$message);
-       $stmt->execute();
-
-       $pdo->commit();
 
 
 
