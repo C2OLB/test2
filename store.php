@@ -25,8 +25,10 @@ $statement = $pdo->prepare($sql);
 $statement->bindParam(':user_name',$user_name);
 $statement->execute();
 
-$result = $statement->fetchAll();
-var_dump($result);
+$result = $statement->fetch();
+//print_r ($result);
+echo $result[0];
+
    die;
 
 
