@@ -4,7 +4,7 @@
 <?php
 
 $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-$sql = "SELECT * FROM users JOIN messages ON users.id = messages.message_id";
+$sql = "SELECT * FROM users RIGHT JOIN messages ON users.id = messages.message_id";
 $statement = $pdo->prepare($sql);
 $result = $statement->execute();
 $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
