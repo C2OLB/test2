@@ -1,6 +1,6 @@
 <?php
 var_dump($_GET);
-die;
+
 $id = $_GET['id'];
 $user_name = $_POST['user_name'];
 $message = $_POST['message'];

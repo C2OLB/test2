@@ -50,7 +50,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a href="edit.php?id=<?= $message['message_id'];?>" class="btn btn-info">update
                             </a></td>
                         <td scope="row">
-                            <a href="delete.php?id=<?= $message['id'];?>" class="btn btn-warning">
+                            <a href="delete.php?id=<?= $message['message_id'];?>" class="btn btn-warning">
                                 delete
                             </a></td>
                     </tr>
