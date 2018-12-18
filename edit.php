@@ -1,12 +1,7 @@
 <?php
-var_dump($_GET);
+session_start();
 
-
-
-//$pdo = new PDO("mysql:host=localhost; dbname=test3", "root", "");
-//$stmt= $pdo->prepare("SELECT * FROM messages WHERE message_id=:message_id");
-//$stmt->execute();
-
+$_SESSION['id'] = $_GET['id'];
 
 ?>
 
@@ -21,7 +16,7 @@ var_dump($_GET);
             <form action="update.php" method="post">
                 <h1>Message</h1>
                 <div class="form-group">
-                    <textarea name="message" class="form-control"></textarea>
+                    <textarea name="user_message" class="form-control"></textarea>
                 </div>
 
                 <div class="form-group">

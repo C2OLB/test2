@@ -36,8 +36,6 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
                     <th scope="col">message</th>
-                    <th scope="col">update</th>
-                    <th scope="col">delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,7 +45,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td scope="row"><?=$message['user_name'];?></td>
                         <td scope="row"><?=$message['user_message'];?></td>
                         <td scope="row">
-                            <a href="edit.php?id=<?= $message['message_id'];?>" class="btn btn-info">update
+                            <a href="edit.php?id=<?= $message['message_id'];?>" class="btn btn-info">edit
                             </a></td>
                         <td scope="row">
                             <a href="delete.php?id=<?= $message['message_id'];?>" class="btn btn-warning">

@@ -1,22 +1,20 @@
 <?php
-var_dump($_GET);
 
-$id = $_GET['id'];
-$user_name = $_POST['user_name'];
-$message = $_POST['message'];
+session_start();
 
+$m = $_POST['user_message'];
 
-$pdo = new PDO("mysql:host=test2; dbname=test", "root", "");
+$edit_message = $_SESSION ['id'];
 
-$sql ="UPDATE messages SET WHERE id=:id";
+$pdo = new PDO("mysql:host=localhost; dbname=test3", "root", "");
+
+$sql ="UPDATE messages SET user_message = :user_message WHERE message_id = :edit_message";
 $stmt = $pdo->prepare($sql);
-$stmt->bindParam(':id',$id);
+$stmt->bindParam(':edit_message',$edit_message);
+$stmt->bindParam(':user_message',$m);
 $stmt->execute();
-$rrt=$stmt->fetch();
-var_dump($rrt);
 
-die;
-header("Location: /show.php"); exit;
+header("Location: /show.php");
 
 
 
