@@ -1,10 +1,10 @@
 <?php
 var_dump($_GET);
-die;
 
-$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-$stmt= $pdo->prepare("SELECT * FROM messages WHERE message_id=:message_id");
-$stmt->execute();
+
+//$pdo = new PDO("mysql:host=localhost; dbname=test3", "root", "");
+//$stmt= $pdo->prepare("SELECT * FROM messages WHERE message_id=:message_id");
+//$stmt->execute();
 
 
 ?>

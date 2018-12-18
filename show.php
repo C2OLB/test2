@@ -20,7 +20,14 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+
 <div class="container">
+    <form action="search.php" method="post">
+        <input name="search_name" placeholder="Search here..." type="search">
+        <button type="submit">Search</button>
+
+    </form>
     <div class="row">
         <div class="col-md-12">
             <table class="table">
@@ -49,10 +56,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
 
                 <?php endforeach;?>
+
+
                 </tbody>
             </table>
 
-
+            <a href="/">Go Back</a>
         </div>
     </div>
 </div>
