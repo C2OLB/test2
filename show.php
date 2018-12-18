@@ -3,11 +3,13 @@
 
 <?php
 
-$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-$sql = "SELECT * FROM users RIGHT JOIN messages ON users.id = messages.message_id";
-$statement = $pdo->prepare($sql);
-$result = $statement->execute();
-$messages = $statement->fetchAll(PDO::FETCH_ASSOC);
+$pdo = new PDO("mysql:host=localhost; dbname=test3", "root", "");
+//$sql = "SELECT * FROM users RIGHT JOIN messages ON users.id = messages.message_id";
+$sql = "SELECT * FROM messages m INNER JOIN users u ON m.user_id = u.user_id";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// print_r($messages);
 
 ?>
 
@@ -27,15 +29,24 @@ $messages = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
                     <th scope="col">message</th>
+                    <th scope="col">update</th>
+                    <th scope="col">delete</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($messages as $message):?>
-                <tr>
-                    <th scope="row"><?=$message['id'];?></th>
-                    <td scope="row"><?=$message['user_name'];?></td>
-                    <td scope="row"><?=$message['message'];?></td>
-                </tr>
+                    <tr>
+                        <td scope="row"><?=$message['user_id'];?></td>
+                        <td scope="row"><?=$message['user_name'];?></td>
+                        <td scope="row"><?=$message['user_message'];?></td>
+                        <td scope="row">
+                            <a href="edit.php?id=<?= $message['message_id'];?>" class="btn btn-info">update
+                            </a></td>
+                        <td scope="row">
+                            <a href="delete.php?id=<?= $message['id'];?>" class="btn btn-warning">
+                                delete
+                            </a></td>
+                    </tr>
 
                 <?php endforeach;?>
                 </tbody>

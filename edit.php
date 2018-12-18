@@ -1,4 +1,13 @@
+<?php
+var_dump($_GET);
+die;
 
+$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
+$stmt= $pdo->prepare("SELECT * FROM messages WHERE message_id=:message_id");
+$stmt->execute();
+
+
+?>
 
 <!doctype html>
 <head>
@@ -8,11 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Name</h1>
-            <form action="store.php" method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="user_name">
-                </div>
+            <form action="update.php" method="post">
                 <h1>Message</h1>
                 <div class="form-group">
                     <textarea name="message" class="form-control"></textarea>
