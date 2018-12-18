@@ -1,7 +1,7 @@
 <?php
 
 $search_name = $_POST['search_name'];
-$result[0] =
+
 
 $pdo = new PDO("mysql:host=localhost; dbname=test3", "root", "");
 
@@ -10,7 +10,7 @@ $statement = $pdo->prepare($sql);
 $statement->bindParam(':search_name',$search_name);
 $statement->execute();
 $result=$statement->fetch();
-  echo $result[0] ;
+
 if($result[0] ==! 0){
   $sql = "SELECT * FROM messages WHERE user_id =:searched_id";
   $stmt = $pdo->prepare($sql);
@@ -20,8 +20,8 @@ if($result[0] ==! 0){
 
 }
 else{
-    $message = "NO USER FOUND";
-    echo "<script type='text/javascript'>alert('$message');
+    $m = "NO USER FOUND";
+    echo "<script type='text/javascript'>alert('$m');
     window.location.href = '/show.php';
 </script>";
 

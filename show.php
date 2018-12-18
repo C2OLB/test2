@@ -4,12 +4,12 @@
 <?php
 
 $pdo = new PDO("mysql:host=localhost; dbname=test3", "root", "");
-//$sql = "SELECT * FROM users RIGHT JOIN messages ON users.id = messages.message_id";
+
 $sql = "SELECT * FROM messages m INNER JOIN users u ON m.user_id = u.user_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// print_r($messages);
+
 
 ?>
 
